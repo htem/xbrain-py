@@ -9,11 +9,13 @@ ___(Step 1) Setup a new conda enviornment (ilastik dependencies)___
 conda create -n ilastik-dev  python=2.7
 source activate ilastik-dev 
 
-conda install -c ilastik ilastik-everything-but-tracking
+conda install -c ilastik ilastik-everything-no-solvers
+conda create -n ilastik-devel -c ilastik ilastik-everything-no-solvers
+conda config --add channels conda-forge
+conda install mahotas
 pip install ndparse
-pip install mahotas
-conda remove tifffile
-conda install -c ilastik  tifffile=0.4.1
+#conda remove tifffile
+#conda install -c ilastik  tifffile=0.4.1
 conda install ipython
 conda install jupyter
 pip install tifffiles

@@ -55,8 +55,10 @@ from __future__ import (absolute_import, division, print_function,
 
 
 # following imports to be updated when directory structure are finalized 
-from create_synth_dict import create_synth_dict
-from compute3dvec import compute3dvec
+#from create_synth_dict import create_synth_dict
+#from compute3dvec import compute3dvec
+from celldetect import create_synth_dict
+from celldetect import compute3dvec
 from scipy import signal
 import numpy as np
 import pdb
