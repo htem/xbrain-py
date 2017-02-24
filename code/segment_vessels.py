@@ -67,38 +67,37 @@ __all__ = ['segment_vessels']
 
 
 def segment_vessels(vessel_probability, probability_threshold, dilation_size, minimum_size):
-    
+
     """
     This function produces a binary image with segmented vessels from a probability map (from
     ilastik or another classifier).
-    
+
     Parameters
     ----------
     vessel_probability : ndarray
         Nr x Nc x Nz matrix which contains the probability of each voxel being a vessel.
-        
+
     probability_threshold : float
         threshold between (0,1) to apply to probability map (only consider voxels for which
         vessel_probability(r,c,z) > probability_threshold).
-        
+
     dilation_size : int
         Sphere Structural Element diameter size.
-    
+
     minimum_size : int
         components smaller than this are removed from image.
-    
+
     Returns
     -------
     ndarry
-        Binary Image 
+        Binary Image
     """
     smallsize = 100 # components smaller than this size are removed. WHY Fixed Size??
-    
     unfiltered_im = (vessel_probability >= probability_threshold)
-    im_removed_small_objects = morphology.remove_small_objects(unfiltered_im, 
+    im_removed_small_objects = morphology.remove_small_objects(unfiltered_im,
                                                                min_size = smallsize, in_place = True)
-    
+
     dilated_im = ndi.binary_dilation(im_removed_small_objects, morphology.ball((dilation_size-1)/2))
-    image_out = morphology.remove_small_objects(dilated_im, min_size = minimum_size, 
+    image_out = morphology.remove_small_objects(dilated_im, min_size = minimum_size,
                                                 in_place = True)
     return(image_out)
