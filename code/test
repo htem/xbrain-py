@@ -1,0 +1,19 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Feb 18 15:51:45 2017
+
+@author: aaron
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+
+from create_synth_dict import create_synth_dict
+
+dict=create_synth_dict(18,10.0)
